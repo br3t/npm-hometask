@@ -16,6 +16,12 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
+    const user = UserService.search({id:req.params.id});
+    if(user) {
+        res.send(user);
+    } else {
+        res.send('User not found');
+    }
 });
 
 module.exports = router;
