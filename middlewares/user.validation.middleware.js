@@ -20,13 +20,13 @@ const createUserValid = (req, res, next) => {
         });
         // basic validation is OK, let's check user uniqueness
         if(req.errorMessage == '') {
-            const sameEmailUser = UserService.search({email:req.params.email});
+            const sameEmailUser = UserService.search({email:req.query.email});
             if(sameEmailUser) {
-                req.errorMessage += `User with email "${req.params.email}" is already exist;\n`;
+                req.errorMessage += `User with email "${req.query.email}" is already exist;\n`;
             }
-            const samePhoneUser = UserService.search({phoneNumber:req.params.phoneNumber});
+            const samePhoneUser = UserService.search({phoneNumber:req.query.phoneNumber});
             if(samePhoneUser) {
-                req.errorMessage += `User with phoneNumber "${req.params.phoneNumber}" is already exist;\n`;
+                req.errorMessage += `User with phoneNumber "${req.query.phoneNumber}" is already exist;\n`;
             } 
         }
     }
