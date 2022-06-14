@@ -6,5 +6,16 @@ const { responseMiddleware } = require('../middlewares/response.middleware');
 const router = Router();
 
 // TODO: Implement route controllers for user
+router.get('/', (req, res) => {
+    const list = UserService.all();
+    if(list) {
+        res.send(list);
+    } else {
+        res.send('Can`t get users');
+    }
+});
+
+router.get('/:id', (req, res) => {
+});
 
 module.exports = router;
