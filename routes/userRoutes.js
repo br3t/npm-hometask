@@ -24,4 +24,14 @@ router.get('/:id', (req, res) => {
     }
 });
 
+router.post('/', (req, res, next) => {
+    next();
+    if(req.errorMessage) {
+        res.send(`Can't create user.\nError: ${req.errorMessage}`);
+    } else {
+        console.log('save data');
+        res.send('User created');
+    }
+}, createUserValid);
+
 module.exports = router;
