@@ -19,6 +19,14 @@ class UserService {
         return item;
     }
 
+    create(data) {
+        const newUserId = UserRepository.create(data);
+        if(!newUserId) {
+            return null;
+        }
+        return newUserId;
+    }
+
 }
 
 module.exports = new UserService();

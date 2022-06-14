@@ -29,8 +29,13 @@ router.post('/', (req, res, next) => {
     if(req.errorMessage) {
         res.send(`Can't create user.\nError: ${req.errorMessage}`);
     } else {
-        console.log('save data');
-        res.send('User created');
+        const newUserId = UserService.create(req.query);
+        if(newUserId) {
+            res.send(`User with id=${newUserId.id} was created`);
+        } else {
+            res.send('User wasn`t created');
+        }
+        
     }
 }, createUserValid);
 
